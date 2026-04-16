@@ -56,23 +56,19 @@ function App() {
         id="oraculo-app"
         className="min-h-screen bg-background text-foreground flex items-center justify-center p-6"
       >
-        <div className="w-full max-w-sm">
+        <div className="w-full max-w-md">
           <Card className="w-full">
-            <CardHeader className="space-y-2 pb-4 border-b border-border">
+            <CardHeader>
               <CardTitle className="text-lg font-semibold">
                 Pergunta 1
               </CardTitle>
-              <CardDescription className="text-sm text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="mb-4 text-sm leading-6 text-muted-foreground">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-2 border-t border-border pt-4">
                 <Button className="flex-1">Sim</Button>
                 <Button variant="destructive" className="flex-1">
                   Não
