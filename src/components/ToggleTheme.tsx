@@ -44,5 +44,3 @@ export function ToggleTheme() {
         </Button>
     );
 }
-
-export default ToggleTheme;
