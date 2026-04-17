@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 
 function About() {
+  useEffect(() => {
+    document.title = "Sobre - Oráculo das Profissões";
+  }, []);
     return (
         <>
         <Header />

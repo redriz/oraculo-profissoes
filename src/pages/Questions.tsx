@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 
 function Questions() {
+  useEffect(() => {
+    document.title = "Perguntas - Oráculo das Profissões";
+  }, []);
+
   return (
     <>
       <Header />
@@ -65,3 +70,4 @@ function Questions() {
 }
 
 export default Questions;
+

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Button } from "./components/ui/button";
 import { HeaderNoTitle } from "./components/HeaderNoTitle";
@@ -6,6 +7,10 @@ import About from "./pages/About";
 import Questions from "./pages/Questions";
 
 function Home() {
+  useEffect(() => {
+    document.title = "Oráculo das Profissões";
+  }, []);
+
   return (
     <>
       <HeaderNoTitle />
