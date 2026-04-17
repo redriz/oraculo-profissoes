@@ -22,7 +22,7 @@ function Questions() {
             </p>
           </div>
 
-          <section className="rounded-[32px] border border-border bg-card/70 p-8 shadow-sm shadow-muted/10 backdrop-blur-xl">
+          <section className="rounded-[16px] border border-border bg-card/70 p-8 shadow-sm shadow-muted/10 backdrop-blur-xl">
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">
@@ -42,7 +42,7 @@ function Questions() {
                 </p>
               </div>
 
-              <div className="space-y-3 rounded-3xl border border-border bg-background/80 p-6 shadow-inner shadow-muted/5">
+              <div className="space-y-3 rounded-[12px] border border-border bg-background/80 p-6 shadow-inner shadow-muted/5">
                 <p className="text-sm text-muted-foreground">
                   Pontos importantes:
                 </p>
