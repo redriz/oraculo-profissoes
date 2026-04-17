@@ -124,7 +124,7 @@ function Results() {
               const answer = normalizedAnswers[question.id];
               console.log(`Question ${question.id}: answer =`, answer, "type:", typeof answer);
               return (
-              <Alert key={question.id} className="border-l-4 border-l-primary">
+              <Alert key={question.id} className="border-l-4 border-l-secondary-foreground/70">
                 <AlertTitle className="text-lg font-semibold">
                   <div className="flex items-center justify-between">
                     <span>Pergunta {question.id}</span>
