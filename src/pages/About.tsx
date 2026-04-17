@@ -13,7 +13,7 @@ function About() {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-bold text-foreground mb-4">
-                        Sobre o Oráculo de Profissões
+                        Sobre o Oráculo das Profissões
                     </h1>
                     <p className="text-lg text-muted-foreground">
                         Uma ferramenta desenvolvida para explorar caminhos profissionais
@@ -28,7 +28,7 @@ function About() {
                             O Projeto
                         </h2>
                         <p className="text-muted-foreground leading-relaxed mb-4">
-                            O Oráculo de Profissões é uma aplicação web interativa desenvolvida como parte do curso de Técnico Especialista em Aplicações Informáticas de Gestão. A plataforma auxilia usuários a descobrirem carreiras alinhadas com seus interesses e habilidades através de um processo intuitivo e envolvente.
+                            O Oráculo das Profissões é uma aplicação web interativa desenvolvida como parte do curso de Técnico Especialista em Aplicações Informáticas de Gestão. A plataforma auxilia usuários a descobrirem carreiras alinhadas com seus interesses e habilidades através de um processo intuitivo e envolvente.
                         </p>
                         <p className="text-muted-foreground leading-relaxed">
                             O objetivo principal é democratizar o acesso à informação sobre oportunidades profissionais, permitindo que estudantes e profissionais em transição de carreira explorem possibilidades de forma prática e eficaz.
