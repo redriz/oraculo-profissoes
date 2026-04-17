@@ -1,8 +1,11 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Button } from "./components/ui/button";
 import { HeaderNoTitle } from "./components/HeaderNoTitle";
 import { ArrowRight } from "lucide-react";
+import About from "./pages/About";
+import Questions from "./pages/Questions";
 
-function App() {
+function Home() {
   return (
     <>
       <HeaderNoTitle />
@@ -13,11 +16,25 @@ function App() {
         <p className="text-sm text-muted-foreground">
           Descubra qual curso é o ideal para você
         </p>
-        <Button size="lg" variant="github" className="mt-4">
-          INICIAR <ArrowRight className="ml-2 h-4 w-4" />
+        <Button asChild size="lg" variant="github" className="mt-4">
+          <Link to="/questions">
+            INICIAR <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </Button>
       </div>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/questions" element={<Questions />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

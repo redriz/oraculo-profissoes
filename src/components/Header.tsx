@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ToggleTheme } from "./ToggleTheme";
 
@@ -7,9 +8,9 @@ export function Header() {
       <header className="w-full border-b border-border bg-card/80 shadow-sm shadow-muted/10 backdrop-blur-sm sticky top-0 z-10">
         <div className="flex items-center justify-between gap-4 px-6 py-4 max-w-7xl mx-auto">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <Link to="/" className="text-2xl font-semibold tracking-tight inline-flex items-center">
               🔮 Oráculo das Profissões
-            </h1>
+            </Link>
           </div>
           <div className="flex gap-2">
             <a
@@ -36,8 +37,8 @@ export function Header() {
                 Código Fonte
               </Button>
             </a>
-            <Button size="sm" variant="secondary">
-              Sobre
+            <Button asChild size="sm" variant="secondary">
+              <Link to="/about">Sobre</Link>
             </Button>
             <ToggleTheme />
           </div>

@@ -37,10 +37,7 @@ function About() {
                             Técnico Especialista em Aplicações Informáticas de Gestão
                         </h2>
                         <p className="text-muted-foreground leading-relaxed mb-4">
-                            Este projeto foi desenvolvido como atividade avaliativa do curso de formação profissional em Aplicações Informáticas de Gestão. O curso capacita profissionais para o desenvolvimento e manutenção de soluções tecnológicas que otimizam processos administrativos e empresariais.
-                        </p>
-                        <p className="text-muted-foreground leading-relaxed">
-                            O desenvolvimento do Oráculo de Profissões permitiu aplicar conhecimentos practicamente em uma aplicação real, integrando conceitos de design, funcionalidade e experiência do usuário.
+                            Este projeto foi desenvolvido como um projeto para apresentação em um evento do IEFP - Instituto do Emprego e Formação Profissional. O curso capacita profissionais para o desenvolvimento e manutenção de soluções tecnológicas que otimizam processos administrativos e empresariais.
                         </p>
                     </section>
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ToggleTheme } from "./ToggleTheme";
 
@@ -31,8 +32,8 @@ export function HeaderNoTitle() {
                 Código Fonte
               </Button>
             </a>
-            <Button size="sm" variant="secondary">
-              Sobre
+            <Button asChild size="sm" variant="secondary">
+              <Link to="/about">Sobre</Link>
             </Button>
             <ToggleTheme />
           </div>
