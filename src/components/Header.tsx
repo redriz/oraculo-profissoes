@@ -8,11 +8,8 @@ export function Header() {
         <div className="flex items-center justify-between gap-4 px-6 py-4 max-w-7xl mx-auto">
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">
-              Oráculo das Profissões
+              🔮 Oráculo das Profissões
             </h1>
-            <p className="text-sm text-muted-foreground">
-              Descubra qual curso é o ideal para você
-            </p>
           </div>
           <div className="flex gap-2">
             <a

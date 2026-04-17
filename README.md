@@ -1,4 +1,4 @@
-# 🎯 Oráculo de Profissões IEFP
+# 🔮 Oráculo de Profissões IEFP
 
 Um webApp interativo que ajuda você a descobrir qual curso profissional do IEFP melhor se adequa ao seu perfil através de um sistema inteligente de perguntas e recomendações personalizadas.
 
