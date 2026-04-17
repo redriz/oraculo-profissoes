@@ -20,7 +20,7 @@ function Home() {
           <h1 className="text-5xl font-semibold tracking-tight">
             Oráculo das Profissões
           </h1>
-          <p className="text-1xl text-muted-foreground">
+          <p className="text-1xl text-muted-foreground pl-1">
             Descubra qual curso é o ideal para você
           </p>
           <Button asChild size="lg" variant="start" className="mt-8">
