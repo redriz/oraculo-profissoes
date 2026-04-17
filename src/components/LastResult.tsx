@@ -130,11 +130,11 @@ export function LastResult() {
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Respostas SIM</span>
-              <Badge variant="default">{getYesCount()}</Badge>
+              <span className="text-sm font-medium">Respostas - <Badge variant="outline">Sim</Badge></span>
+              <Badge variant="constructive">{getYesCount()}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Respostas NÃO</span>
+              <span className="text-sm font-medium">Respostas - <Badge variant="outline">Não</Badge></span>
               <Badge variant="destructive">{getNoCount()}</Badge>
             </div>
           </div>

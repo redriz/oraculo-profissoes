@@ -111,9 +111,9 @@ function Results() {
       <main className="relative min-h-screen bg-background text-foreground">
         <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-8 sm:py-10">
           <div className="mb-8 max-w-3xl">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Resultados
-            </h1>
+            </h2>
             <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
               Aqui estão todas as suas respostas. Você respondeu <strong>SIM</strong> a {getYesCount()} perguntas e <strong>NÃO</strong> a {getNoCount()} perguntas.
             </p>
@@ -136,7 +136,7 @@ function Results() {
                     <Badge
                       variant={
                         answer === true
-                          ? "default"
+                          ? "constructive"
                           : "destructive"
                       }
                     //   className={`px-3 py-1 text-sm font-semibold ${
@@ -145,7 +145,7 @@ function Results() {
                     //       : "bg-red-600 hover:bg-red-700"
                     //   }`}
                     >
-                      {answer === true ? "SIM" : "NÃO"}
+                      {answer === true ? "Sim" : "Não"}
                     </Badge>
                   </div>
                 </AlertDescription>
