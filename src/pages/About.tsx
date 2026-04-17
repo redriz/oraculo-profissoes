@@ -50,7 +50,7 @@ function About() {
                             {[
                                 { name: 'Adonai Rodriguez', role: 'Desenvolvimento e Programação' },
                                 { name: 'Larissa Chaves', role: 'Contribuidor' },
-                                { name: 'Alhóna Lytsia', role: 'Contribuidor' },
+                                { name: 'Alona Lysytsia', role: 'Contribuidor' },
                                 { name: 'Juliana Silva', role: 'Contribuidor' },
                                 { name: 'Matheus Deodato', role: 'Contribuidor' },
                             ].map((member) => (

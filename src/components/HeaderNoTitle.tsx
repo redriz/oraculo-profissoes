@@ -1,11 +1,29 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ToggleTheme } from "./ToggleTheme";
 
 export function HeaderNoTitle() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 0);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="w-full sticky top-0 z-10">
+      <header
+        className={`w-full sticky top-0 z-10 transition-all duration-300 ${
+          scrolled
+            ? "border-b border-border bg-card/80 shadow-sm shadow-muted/10 backdrop-blur-sm"
+            : "border-transparent bg-transparent shadow-none"
+        }`}
+      >
         <div className="flex justify-end px-6 py-4 mx-auto">
           <div className="flex gap-2">
             <a
