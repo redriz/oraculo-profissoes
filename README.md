@@ -2,7 +2,7 @@
 
 Um webApp interativo que ajuda você a descobrir qual curso profissional do IEFP melhor se adequa ao seu perfil através de um sistema inteligente de perguntas e recomendações personalizadas.
 
-**Desenvolvido por formandos do IEFP para o evento de encerramento do curso profissional.**
+**Desenvolvido por formandos do IEFP.**
 
 ---
 
@@ -51,7 +51,7 @@ npm --version
 
 **Se tem Git instalado:**
 ```bash
-git clone https://github.com/seu-usuario/oraculo-profissoes.git
+git clone https://github.com/redriz/oraculo-profissoes.git
 cd oraculo-profissoes
 ```
 
@@ -172,6 +172,8 @@ Se encontrar problemas:
 ---
 
 **Desenvolvido com ❤️ pelos formandos do IEFP**
+
+```
 import reactDom from 'eslint-plugin-react-dom'
 
 export default defineConfig([
