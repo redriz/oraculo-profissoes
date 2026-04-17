@@ -16,8 +16,8 @@ function Home() {
   return (
     <>
       <HeaderNoTitle />
-      <div className="flex min-h-screen flex-col items-start justify-center gap-2 max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between w-full gap-8">
+      <div className="flex flex-col md:flex-row min-h-screen items-center justify-center gap-2 max-w-6xl mx-auto px-4 md:px-6">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full gap-6 md:gap-8">
           <div className="flex-1">
             <span className="text-6xl mb-2 block">🔮</span>
             <div className="pl-3">
@@ -34,7 +34,7 @@ function Home() {
               </Button>
             </div>
           </div>
-          <div className="shrink-0 flex items-center justify-center">
+          <div className="shrink-0 lastresult-mobile lastresult-desktop">
             <LastResult />
           </div>
         </div>
