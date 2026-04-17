@@ -11,7 +11,7 @@ function Home() {
       <HeaderNoTitle />
       <div className="flex min-h-screen flex-col items-start justify-center gap-2 max-w-6xl mx-auto px-6">
         <span className="text-6xl mb-2">🔮</span>
-        <div className="pl-4">
+        <div className="pl-3">
           <h1 className="text-5xl font-semibold tracking-tight">
             Oráculo das Profissões
           </h1>
