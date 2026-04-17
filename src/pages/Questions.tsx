@@ -173,7 +173,7 @@ function Questions() {
           <Button
             size="lg"
             onClick={() => handleAnswer(true)}
-            variant={currentAnswer === true ? "default" : "sim"}
+            variant={currentAnswer === true ? "constructive" : "sim"}
             className="flex-1"
           >
             SIM
