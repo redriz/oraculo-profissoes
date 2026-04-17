@@ -21,6 +21,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         github: "bg-foreground text-secondary hover:bg-foreground/90",
         start: "bg-foreground text-secondary hover:bg-primary hover:text-primary-foreground",
+        sim: "border-border bg-background shadow-xs hover:bg-muted hover:bg-primary/40 text-primary-foreground",
+        nao: "border-border bg-background shadow-xs hover:bg-muted hover:bg-destructive/40 text-primary-foreground",
       },
       size: {
         default:
