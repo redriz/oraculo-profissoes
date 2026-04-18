@@ -29,6 +29,7 @@ function Questions() {
   } = useQuizState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResetDialog, setShowResetDialog] = useState(false);
+  const [lastQuestionAnswered, setLastQuestionAnswered] = useState(false);
 
   useEffect(() => {
     document.title = "Perguntas - Oráculo das Profissões";
@@ -39,6 +40,8 @@ function Questions() {
     if (!loading) {
       const firstUnanswered = getFirstUnansweredQuestionId();
       setCurrentQuestion(firstUnanswered - 1);
+      // Check if last question (12) was already answered before
+      setLastQuestionAnswered(hasAnsweredQuestion(12));
     }
   }, [loading]);
 
@@ -52,21 +55,44 @@ function Questions() {
   // Check if current question is the last one (question 12)
   const isLastQuestion = currentQuestion === questions.length - 1;
 
+  // Auto-advance is disabled if user already answered question 12
+  const autoAdvance = !lastQuestionAnswered;
+
   const handleConfirmReset = () => {
     resetQuiz();
     setCurrentQuestion(0);
     setShowResetDialog(false);
+    setLastQuestionAnswered(false);
   };
 
   const handleAnswer = (answer: boolean) => {
     console.log("handleAnswer called - currentQuestion:", currentQuestion, "questions.length:", questions.length);
     
+    // Save answer
+    saveAnswer(questions[currentQuestion].id, answer);
+    
+    // Check if this was question 12 (last question)
     if (isLastQuestion) {
-      // Última pergunta - apenas salvar, não avançar
-      saveAnswer(questions[currentQuestion].id, answer);
-    } else {
-      // Para outras perguntas, salvar e ir para próxima
-      saveAnswer(questions[currentQuestion].id, answer);
+      setLastQuestionAnswered(true);
+      return; // Don't advance
+    }
+    
+    // If auto-advance disabled, stay on current question
+    if (!autoAdvance) {
+      return;
+    }
+    
+    // Find next unanswered question and jump to it
+    for (let i = currentQuestion + 1; i < questions.length; i++) {
+      if (!hasAnsweredQuestion(questions[i].id)) {
+        setCurrentQuestion(i);
+        return;
+      }
+    }
+    
+    // All remaining questions answered, but not question 12 yet
+    // Stay on current or advance normally
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
