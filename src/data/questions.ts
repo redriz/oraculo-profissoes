@@ -47,6 +47,6 @@ export const questions: Question[] = [
   },
   {
     id: 12,
-    text: "Tens facilidade em manter a calma em situações de stress ou emergência?",
+    text: "Tens dificuldade em manter a calma em situações de stress ou emergência?",
   },
 ];

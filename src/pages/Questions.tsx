@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
+import { ArrowLeft, ArrowRight, RotateCcw, CircleCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import {
@@ -24,6 +24,7 @@ function Questions() {
     completeQuiz,
     resetQuiz,
     getAnswerForQuestion,
+    hasAnsweredQuestion,
   } = useQuizState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResetDialog, setShowResetDialog] = useState(false);
@@ -36,6 +37,12 @@ function Questions() {
     return <div>Carregando...</div>;
   }
 
+  // Check if all 12 questions have been answered
+  const allQuestionsAnswered = questions.every((q) => hasAnsweredQuestion(q.id));
+
+  // Check if current question is the last one (question 12)
+  const isLastQuestion = currentQuestion === questions.length - 1;
+
   const handleConfirmReset = () => {
     resetQuiz();
     setCurrentQuestion(0);
@@ -44,29 +51,36 @@ function Questions() {
 
   const handleAnswer = (answer: boolean) => {
     console.log("handleAnswer called - currentQuestion:", currentQuestion, "questions.length:", questions.length);
-    if (currentQuestion === questions.length - 1) {
-      console.log("Last question! Saving answer and preparing to complete quiz");
+    
+    if (isLastQuestion) {
+      // Última pergunta - apenas salvar, não avançar
       saveAnswer(questions[currentQuestion].id, answer);
-      
-      // Use setTimeout to ensure localStorage is updated
-      setTimeout(() => {
-        console.log("Calling completeQuiz()");
-        completeQuiz();
-        // Navigate after a longer delay to ensure state is updated
-        setTimeout(() => {
-          console.log("Navigating to /results");
-          navigate("/results");
-        }, 50);
-      }, 100);
     } else {
-      // For other questions, just save and move to next
+      // Para outras perguntas, salvar e ir para próxima
       saveAnswer(questions[currentQuestion].id, answer);
       setCurrentQuestion(currentQuestion + 1);
     }
   };
 
+  const handleFinalize = () => {
+    console.log("handleFinalize called");
+    
+    // Use setTimeout to ensure localStorage is updated
+    setTimeout(() => {
+      console.log("Calling completeQuiz()");
+      completeQuiz();
+      // Navigate after a longer delay to ensure state is updated
+      setTimeout(() => {
+        console.log("Navigating to /results");
+        navigate("/results");
+      }, 50);
+    }, 100);
+  };
+
   const progress = ((currentQuestion + 1) / questions.length) * 100;
+  
   const question = questions[currentQuestion];
+  
   const currentAnswer = getAnswerForQuestion(question.id);
 
   return (
@@ -117,20 +131,13 @@ function Questions() {
             </p>
           </div>
 
-          <section className="rounded-[16px] border border-border bg-card/70 p-8 shadow-sm shadow-muted/10 backdrop-blur-xl">
+          <section className="rounded-[16px] border border-border bg-card/70 p-6 shadow-sm shadow-muted/10 backdrop-blur-xl">
             <div className="space-y-8">
               <div className="flex items-center justify-between pb-4 border-b border-border">
-                <span className="text-sm text-muted-foreground font-medium">
+                <span className="text-sm text-muted-foreground font-medium mr-2">
                   Pergunta #{currentQuestion + 1}
                 </span>
-                <div className="flex gap-2">
-                  <Button
-                    onClick={() => setShowResetDialog(true)}
-                    variant="destructive"
-                    size="icon"
-                  >
-                    <RotateCcw className="h-4 w-4" />
-                  </Button>
+                <div className="flex gap-1">
                   <Button
                     onClick={() => {
                       if (currentQuestion > 0) {
@@ -139,7 +146,8 @@ function Questions() {
                     }}
                     disabled={currentQuestion === 0}
                     variant="outline"
-                    size="icon"
+                    size="lg"
+                    className="mr-0.5"
                   >
                     <ArrowLeft className="h-4 w-4" />
                   </Button>
@@ -151,9 +159,27 @@ function Questions() {
                     }}
                     disabled={currentQuestion === questions.length - 1}
                     variant="outline"
-                    size="icon"
+                    size="lg"
+                    className="mr-1"
                   >
                     <ArrowRight className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    onClick={() => setShowResetDialog(true)}
+                    variant="destructive"
+                    size="lg"
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    onClick={() => handleFinalize()}
+                    disabled={!allQuestionsAnswered}
+                    variant={allQuestionsAnswered ? "default" : "secondary"}
+                    size="lg"
+                    className="flex items-center gap-2"
+                  >
+                    <CircleCheck />
+                    Finalizar
                   </Button>
                 </div>
               </div>
