@@ -125,6 +125,17 @@ export function useQuizState() {
     return Object.keys(quizState?.answers ?? {}).length > 0;
   };
 
+  const getFirstUnansweredQuestionId = (): number => {
+    // Find the first question that hasn't been answered
+    for (let i = 1; i <= 12; i++) {
+      if (!hasAnsweredQuestion(i)) {
+        return i;
+      }
+    }
+    // All questions answered, return 1 (or last one)
+    return 1;
+  };
+
   const isQuizCompleted = (): boolean => {
     return quizState?.completed ?? false;
   };
@@ -144,6 +155,7 @@ export function useQuizState() {
     hasAnsweredQuestion,
     getAnswerForQuestion,
     hasStartedQuiz,
+    getFirstUnansweredQuestionId,
     isQuizCompleted,
     getLastResult,
   };

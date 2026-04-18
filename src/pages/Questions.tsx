@@ -25,6 +25,7 @@ function Questions() {
     resetQuiz,
     getAnswerForQuestion,
     hasAnsweredQuestion,
+    getFirstUnansweredQuestionId,
   } = useQuizState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResetDialog, setShowResetDialog] = useState(false);
@@ -32,6 +33,14 @@ function Questions() {
   useEffect(() => {
     document.title = "Perguntas - Oráculo das Profissões";
   }, []);
+
+  // Initialize to first unanswered question (0-indexed)
+  useEffect(() => {
+    if (!loading) {
+      const firstUnanswered = getFirstUnansweredQuestionId();
+      setCurrentQuestion(firstUnanswered - 1);
+    }
+  }, [loading]);
 
   if (loading) {
     return <div>Carregando...</div>;
