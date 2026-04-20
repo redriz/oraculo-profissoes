@@ -21,5 +21,16 @@ export const profileTypes: ProfileType[] = [
     name: "Perfil Prático e Operacional",
     relatedAnswersYes: [5, 8, 12],
     relatedAnswersNo: [2]
+  },
+  {
+    id: 5,
+    name: "Tens um perfil extremamente versátil e adaptável.",
+    relatedAnswersYes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  },
+  {
+    id: 6,
+    name: "Não foi possível indetificar o seu perfil, talvez uma oferta de formação abaixo possa te interessar.",
+    relatedAnswersYes: [],
+    relatedAnswersNo: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   }
 ];

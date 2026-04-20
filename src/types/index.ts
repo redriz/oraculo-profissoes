@@ -10,13 +10,13 @@ export interface Course {
   habilitation12: boolean;
   url: string;
   image: string;
-  profileType: number;
+  profileType: number[];
 }
 
 export interface ProfileType {
   id: number;
   name: string;
-  relatedAnswersYes: number[];
+  relatedAnswersYes?: number[];
   relatedAnswersNo?: number[];
 }
 
