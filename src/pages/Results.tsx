@@ -124,14 +124,16 @@ function Results() {
               const answer = normalizedAnswers[question.id];
               console.log(`Question ${question.id}: answer =`, answer, "type:", typeof answer);
               return (
-              <Alert key={question.id} className="border-l-4 border-l-secondary-foreground/70">
-                <AlertTitle className="text-lg font-semibold">
+              <Alert key={question.id} className="border-l-4 border-l-secondary-foreground/70 flex flex-col items-left justify-between gap-4">
+                <div><AlertTitle className="text-lg font-semibold">
                   <div className="flex items-center justify-between">
                     <span>Pergunta {question.id}</span>
                   </div>
                 </AlertTitle>
                 <AlertDescription className="space-y-3 mt-2">
                   <p className="text-base text-foreground">{question.text}</p>
+                  </AlertDescription></div>
+                  <AlertDescription>
                   <div>
                     <Badge
                       variant={
@@ -139,11 +141,7 @@ function Results() {
                           ? "constructive"
                           : "destructive"
                       }
-                     //   className={`px-3 py-1 text-sm font-semibold ${
-                     //     answer === true
-                     //       ? "bg-green-600 hover:bg-green-700"
-                     //       : "bg-red-600 hover:bg-red-700"
-                     //   }`}
+                      className="px-3 py-1 text-1xl"
                     >
                       {answer === true ? "Sim" : "Não"}
                     </Badge>
