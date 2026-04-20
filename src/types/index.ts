@@ -3,6 +3,15 @@ export interface Question {
   text: string;
 }
 
+export interface Course {
+  id: number;
+  name: string;
+  description: string;
+  url: string;
+  image: string;
+  relatedQuestions: number[];
+}
+
 export interface QuizAnswers {
   [key: number]: boolean | null;
 }
