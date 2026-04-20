@@ -3,11 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useQuizState } from "@/hooks/useQuizState";
 import { questions } from "@/data/questions";
 
@@ -15,8 +11,11 @@ const STORAGE_KEY = "quiz_state";
 
 function Results() {
   const navigate = useNavigate();
-  const { lastResult, finishQuizAndSaveResult, resetQuiz, loading } = useQuizState();
-  const [resultState, setResultState] = useState<typeof lastResult | null>(null);
+  const { lastResult, finishQuizAndSaveResult, resetQuiz, loading } =
+    useQuizState();
+  const [resultState, setResultState] = useState<typeof lastResult | null>(
+    null,
+  );
   const [resultCached, setResultCached] = useState(lastResult);
   const hasFinishedRef = useRef(false);
 
@@ -42,12 +41,19 @@ function Results() {
     }
 
     const isCompleted = parsedState?.completed === true;
-    console.log("Results.tsx - parsed state completed:", isCompleted, "full state:", parsedState);
+    console.log(
+      "Results.tsx - parsed state completed:",
+      isCompleted,
+      "full state:",
+      parsedState,
+    );
 
     if (isCompleted) {
       setResultState(parsedState);
       hasFinishedRef.current = true;
-      console.log("Results.tsx - quiz completed, calling finishQuizAndSaveResult");
+      console.log(
+        "Results.tsx - quiz completed, calling finishQuizAndSaveResult",
+      );
       finishQuizAndSaveResult();
       return;
     }
@@ -68,15 +74,20 @@ function Results() {
   }
 
   console.log("Results.tsx rendering - activeResult:", activeResult);
-  console.log("Results.tsx rendering - activeResult.answers:", activeResult.answers);
+  console.log(
+    "Results.tsx rendering - activeResult.answers:",
+    activeResult.answers,
+  );
 
   // Normalizar respostas: JSON converte chaves numéricas para texto, converter de volta
   const normalizedAnswers = Object.keys(activeResult.answers || {}).reduce(
     (acc, key) => {
-      acc[parseInt(key)] = (activeResult.answers as Record<string, boolean>)[key];
+      acc[parseInt(key)] = (activeResult.answers as Record<string, boolean>)[
+        key
+      ];
       return acc;
     },
-    {} as Record<number, boolean>
+    {} as Record<number, boolean>,
   );
   console.log("Results.tsx rendering - normalizedAnswers:", normalizedAnswers);
 
@@ -94,13 +105,13 @@ function Results() {
 
   const getYesCount = () => {
     return Object.values(normalizedAnswers || {}).filter(
-      (answer) => answer === true
+      (answer) => answer === true,
     ).length;
   };
 
   const getNoCount = () => {
     return Object.values(normalizedAnswers || {}).filter(
-      (answer) => answer === false
+      (answer) => answer === false,
     ).length;
   };
 
@@ -115,39 +126,51 @@ function Results() {
               Resultados
             </h2>
             <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-              Aqui estão todas as suas respostas. Você respondeu <strong>SIM</strong> a {getYesCount()} perguntas e <strong>NÃO</strong> a {getNoCount()} perguntas.
+              Aqui estão todas as suas respostas. Você respondeu{" "}
+              <strong>SIM</strong> a {getYesCount()} perguntas e{" "}
+              <strong>NÃO</strong> a {getNoCount()} perguntas.
             </p>
           </div>
 
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {questions.map((question) => {
               const answer = normalizedAnswers[question.id];
-              console.log(`Question ${question.id}: answer =`, answer, "type:", typeof answer);
+              console.log(
+                `Question ${question.id}: answer =`,
+                answer,
+                "type:",
+                typeof answer,
+              );
               return (
-              <Alert key={question.id} className="border-l-4 border-l-secondary-foreground/70 flex flex-col items-left justify-between gap-4">
-                <div><AlertTitle className="text-lg font-semibold">
-                  <div className="flex items-center justify-between">
-                    <span>Pergunta {question.id}</span>
-                  </div>
-                </AlertTitle>
-                <AlertDescription className="space-y-3 mt-2">
-                  <p className="text-base text-foreground">{question.text}</p>
-                  </AlertDescription></div>
-                  <AlertDescription>
+                <Alert
+                  key={question.id}
+                  className="border-l-4 border-l-secondary-foreground/70 flex flex-col items-left justify-between gap-4"
+                >
                   <div>
-                    <Badge
-                      variant={
-                        answer === true
-                          ? "constructive"
-                          : "destructive"
-                      }
-                      className="px-3 py-1 text-1xl"
-                    >
-                      {answer === true ? "Sim" : "Não"}
-                    </Badge>
+                    <AlertTitle className="text-lg font-semibold">
+                      <div className="flex items-center justify-between">
+                        <span>Pergunta {question.id}</span>
+                      </div>
+                    </AlertTitle>
+                    <AlertDescription className="space-y-3 mt-2">
+                      <p className="text-base text-foreground">
+                        {question.text}
+                      </p>
+                    </AlertDescription>
                   </div>
-                </AlertDescription>
-              </Alert>
+                  <AlertDescription>
+                    <div>
+                      <Badge
+                        variant={
+                          answer === true ? "constructive" : "destructive"
+                        }
+                        className="px-3 py-1 text-1xl"
+                      >
+                        {answer === true ? "Sim" : "Não"}
+                      </Badge>
+                    </div>
+                  </AlertDescription>
+                </Alert>
               );
             })}
           </section>
@@ -160,10 +183,7 @@ function Results() {
             >
               Voltar ao Início
             </Button>
-            <Button
-              onClick={handleDoAgain}
-              className="flex-1 sm:flex-none"
-            >
+            <Button onClick={handleDoAgain} className="flex-1 sm:flex-none">
               Reiniciar
             </Button>
           </div>
