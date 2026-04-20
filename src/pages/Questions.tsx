@@ -168,7 +168,7 @@ function Questions() {
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                  Perguntas
+                  Questionário
                 </h1>
                 <span className="text-sm text-muted-foreground">
                   {answeredCount}/{questions.length} respondidas
