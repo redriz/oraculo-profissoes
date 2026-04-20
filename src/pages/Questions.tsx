@@ -202,7 +202,7 @@ function Questions() {
           </section>
         </div>
       </main>
-      <div className="sticky bottom-18.5 z-21 border-t border-border bg-background/90 backdrop-blur-xl px-6 py-4 sm:px-8">
+      <div className="sticky bottom-18 z-20 border-t border-border bg-background/90 backdrop-blur-xl px-6 py-4 sm:px-8">
         <div className="mx-auto flex max-w-6xl">
           <div className="flex gap-1 mr-auto">
             <Button
