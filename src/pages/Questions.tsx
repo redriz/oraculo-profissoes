@@ -181,8 +181,8 @@ function Questions() {
                 ></div>
               </div>
             </div>
-            <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-              Responda às perguntas abaixo para descobrir qual profissão é a
+            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-lg">
+              Responda às perguntas abaixo para descobrir qual curso do IEFP é o
               mais adequada para você.
             </p>
           </div>
@@ -193,7 +193,7 @@ function Questions() {
           >
             <div className="space-y-8">
               <div className="flex items-center justify-between pb-4 border-b border-border">
-                <span className="text-2xl text-muted-foreground font-medium mr-2">
+                <span className="text-1xl text-muted-foreground font-medium mr-2">
                   Pergunta #{currentQuestion + 1}
                 </span>
                 <Button variant="outline" size="icon" onClick={handleRestart}>
@@ -202,7 +202,7 @@ function Questions() {
               </div>
 
               <div>
-                <h2 className="text-3xl font-semibold text-foreground">
+                <h2 className="text-2xl font-semibold text-foreground">
                   {question.text}
                 </h2>
               </div>
