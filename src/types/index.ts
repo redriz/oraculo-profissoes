@@ -7,9 +7,17 @@ export interface Course {
   id: number;
   name: string;
   description: string;
+  habilitation12: boolean;
   url: string;
   image: string;
-  relatedQuestions: number[];
+  profileType: number;
+}
+
+export interface ProfileType {
+  id: number;
+  name: string;
+  relatedAnswersYes: number[];
+  relatedAnswersNo?: number[];
 }
 
 export interface QuizAnswers {
