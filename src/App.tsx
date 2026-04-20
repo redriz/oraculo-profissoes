@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import About from "./pages/About";
 import Questions from "./pages/Questions";
 import Results from "./pages/Results";
+import { Footer } from "./components/Footer";
 
 function Home() {
   useEffect(() => {
@@ -49,6 +50,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

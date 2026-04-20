@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useQuizState } from "@/hooks/useQuizState";
 import { questions } from "@/data/questions";
+import { Footer } from "@/components/Footer";
 
 const STORAGE_KEY = "quiz_state";
 
@@ -188,6 +189,7 @@ function Results() {
             </Button>
           </div>
         </div>
+        <Footer />
       </main>
     </>
   );
