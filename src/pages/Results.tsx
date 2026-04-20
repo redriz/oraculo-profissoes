@@ -166,7 +166,7 @@ function Results() {
               onClick={handleDoAgain}
               className="flex-1 sm:flex-none"
             >
-              Fazer Novamente
+              Reiniciar
             </Button>
           </div>
         </div>

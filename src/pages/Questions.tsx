@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, RotateCcw, CircleCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, RotateCcw, CircleCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import {
@@ -50,7 +50,9 @@ function Questions() {
   }
 
   // Check if all 12 questions have been answered
-  const allQuestionsAnswered = questions.every((q) => hasAnsweredQuestion(q.id));
+  const allQuestionsAnswered = questions.every((q) =>
+    hasAnsweredQuestion(q.id),
+  );
 
   // Check if current question is the last one (question 12)
   const isLastQuestion = currentQuestion === questions.length - 1;
@@ -66,22 +68,27 @@ function Questions() {
   };
 
   const handleAnswer = (answer: boolean) => {
-    console.log("handleAnswer called - currentQuestion:", currentQuestion, "questions.length:", questions.length);
-    
+    console.log(
+      "handleAnswer called - currentQuestion:",
+      currentQuestion,
+      "questions.length:",
+      questions.length,
+    );
+
     // Save answer
     saveAnswer(questions[currentQuestion].id, answer);
-    
+
     // Check if this was question 12 (last question)
     if (isLastQuestion) {
       setLastQuestionAnswered(true);
       return; // Don't advance
     }
-    
+
     // If auto-advance disabled, stay on current question
     if (!autoAdvance) {
       return;
     }
-    
+
     // Find next unanswered question and jump to it
     for (let i = currentQuestion + 1; i < questions.length; i++) {
       if (!hasAnsweredQuestion(questions[i].id)) {
@@ -89,7 +96,7 @@ function Questions() {
         return;
       }
     }
-    
+
     // All remaining questions answered, but not question 12 yet
     // Stay on current or advance normally
     if (currentQuestion < questions.length - 1) {
@@ -99,7 +106,7 @@ function Questions() {
 
   const handleFinalize = () => {
     console.log("handleFinalize called");
-    
+
     // Use setTimeout to ensure localStorage is updated
     setTimeout(() => {
       console.log("Calling completeQuiz()");
@@ -113,10 +120,17 @@ function Questions() {
   };
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
-  
+
   const question = questions[currentQuestion];
-  
+
   const currentAnswer = getAnswerForQuestion(question.id);
+
+  const handleRestart = () => {
+    // Longer delay to ensure finishQuizAndSaveResult has persisted to localStorage
+    setTimeout(() => {
+      navigate("/");
+    }, 200);
+  };
 
   return (
     <>
@@ -127,7 +141,8 @@ function Questions() {
           <AlertDialogHeader>
             <AlertDialogTitle>Reiniciar Sessão?</AlertDialogTitle>
             <AlertDialogDescription>
-              Tem certeza que deseja reiniciar? Todas as suas respostas serão perdidas.
+              Tem certeza que deseja reiniciar? Todas as suas respostas serão
+              perdidas.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -162,65 +177,24 @@ function Questions() {
               </div>
             </div>
             <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-              Responda às perguntas abaixo para descobrir qual profissão é a mais adequada para você.
+              Responda às perguntas abaixo para descobrir qual profissão é a
+              mais adequada para você.
             </p>
           </div>
 
           <section className="rounded-[16px] border border-border bg-card/70 p-6 shadow-sm shadow-muted/10 backdrop-blur-xl">
             <div className="space-y-8">
               <div className="flex items-center justify-between pb-4 border-b border-border">
-                <span className="text-sm text-muted-foreground font-medium mr-2">
+                <span className="text-2xl text-muted-foreground font-medium mr-2">
                   Pergunta #{currentQuestion + 1}
                 </span>
-                <div className="flex gap-1">
-                  <Button
-                    onClick={() => {
-                      if (currentQuestion > 0) {
-                        setCurrentQuestion(currentQuestion - 1);
-                      }
-                    }}
-                    disabled={currentQuestion === 0}
-                    variant="outline"
-                    size="lg"
-                    className="mr-0.5"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      if (currentQuestion < questions.length - 1) {
-                        setCurrentQuestion(currentQuestion + 1);
-                      }
-                    }}
-                    disabled={currentQuestion === questions.length - 1}
-                    variant="outline"
-                    size="lg"
-                    className="mr-1"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    onClick={() => setShowResetDialog(true)}
-                    variant="destructive"
-                    size="lg"
-                  >
-                    <RotateCcw className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    onClick={() => handleFinalize()}
-                    disabled={!allQuestionsAnswered}
-                    variant={allQuestionsAnswered ? "default" : "secondary"}
-                    size="lg"
-                    className="flex items-center gap-2"
-                  >
-                    <CircleCheck />
-                    Finalizar
-                  </Button>
-                </div>
+                <Button variant="outline" size="icon" onClick={handleRestart}>
+                  <X />
+                </Button>
               </div>
 
               <div>
-                <h2 className="text-2xl font-semibold text-foreground">
+                <h2 className="text-3xl font-semibold text-foreground">
                   {question.text}
                 </h2>
               </div>
@@ -228,7 +202,57 @@ function Questions() {
           </section>
         </div>
       </main>
-
+      <div className="sticky bottom-18.5 z-21 border-t border-border bg-background/90 backdrop-blur-xl px-6 py-4 sm:px-8">
+        <div className="mx-auto flex max-w-6xl">
+          <div className="flex gap-1 mr-auto">
+            <Button
+              onClick={() => {
+                if (currentQuestion > 0) {
+                  setCurrentQuestion(currentQuestion - 1);
+                }
+              }}
+              disabled={currentQuestion === 0}
+              variant="outline"
+              size="lg"
+              className="mr-0.5"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              onClick={() => {
+                if (currentQuestion < questions.length - 1) {
+                  setCurrentQuestion(currentQuestion + 1);
+                }
+              }}
+              disabled={currentQuestion === questions.length - 1}
+              variant="outline"
+              size="lg"
+              className="mr-1"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+          <div className="flex gap-1">
+            <Button
+              onClick={() => setShowResetDialog(true)}
+              variant="destructive"
+              size="lg"
+            >
+              <RotateCcw className="h-4 w-4" />
+            </Button>
+            <Button
+              onClick={() => handleFinalize()}
+              disabled={!allQuestionsAnswered}
+              variant={allQuestionsAnswered ? "default" : "secondary"}
+              size="lg"
+              className="flex items-center gap-2"
+            >
+              <CircleCheck />
+              Finalizar
+            </Button>
+          </div>
+        </div>
+      </div>
       <div className="sticky bottom-0 z-20 border-t border-border bg-background/90 backdrop-blur-xl px-6 py-4 sm:px-8">
         <div className="mx-auto flex max-w-6xl gap-3">
           <Button
