@@ -12,7 +12,6 @@ type Theme = "system" | "light" | "dark";
 
 export function ToggleTheme() {
     const [theme, setTheme] = useState<Theme>("system");
-    const [currentIsDark, setCurrentIsDark] = useState(false);
 
     useEffect(() => {
         const saved = localStorage.getItem("theme") as Theme | null;
@@ -44,8 +43,6 @@ export function ToggleTheme() {
         } else {
             shouldBeDark = selectedTheme === "dark";
         }
-
-        setCurrentIsDark(shouldBeDark);
 
         if (shouldBeDark) {
             document.documentElement.classList.add("dark");
