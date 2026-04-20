@@ -74,15 +74,11 @@ function About() {
                         <ul className="space-y-2 text-muted-foreground">
                             <li className="flex items-start">
                                 <span className="mr-3 text-accent font-bold">•</span>
-                                <span>Exploração interativa de profissões e suas características</span>
+                                <span>Recomendação personalizadas do curso</span>
                             </li>
                             <li className="flex items-start">
                                 <span className="mr-3 text-accent font-bold">•</span>
-                                <span>Recomendações personalizadas baseadas em preferências</span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="mr-3 text-accent font-bold">•</span>
-                                <span>Informações detalhadas sobre diferentes áreas profissionais</span>
+                                <span>Questionário de descoberta de interesses</span>
                             </li>
                             <li className="flex items-start">
                                 <span className="mr-3 text-accent font-bold">•</span>
