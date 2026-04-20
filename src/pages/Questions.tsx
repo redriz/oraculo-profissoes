@@ -189,7 +189,7 @@ function Questions() {
 
           <section 
             key={currentQuestion}
-            className={"rounded-[16px] border border-border bg-card/70 p-6 shadow-sm shadow-muted/10 backdrop-blur-xl animate-in fade-in slide-in-from-bottom-2 duration-200 " + (currentAnswer === false ? "border-destructive/80" : currentAnswer === true ? "border-primary/80" : "")}
+            className={"rounded-[16px] border border-border bg-card/70 p-6 shadow-sm shadow-muted/10 backdrop-blur-xl animate-in fade-in slide-in-from-bottom-2 duration-200 " + (currentAnswer === false ? "border-destructive/80" : currentAnswer === true ? "border-chart-3/80" : "")}
           >
             <div className="space-y-8">
               <div className="flex items-center justify-between pb-4 border-b border-border">
