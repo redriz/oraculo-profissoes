@@ -104,7 +104,7 @@ function Questions() {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
       }
-    }, 500);
+    }, 400);
   };
 
   const handleFinalize = () => {
