@@ -74,7 +74,7 @@ function About() {
                         <ul className="space-y-2 text-muted-foreground">
                             <li className="flex items-start">
                                 <span className="mr-3 text-accent font-bold">•</span>
-                                <span>Recomendação personalizadas do curso</span>
+                                <span>Recomendação personalizada do curso</span>
                             </li>
                             <li className="flex items-start">
                                 <span className="mr-3 text-accent font-bold">•</span>
