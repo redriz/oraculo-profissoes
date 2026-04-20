@@ -13,6 +13,16 @@ function Home() {
     document.title = "Oráculo das Profissões";
   }, []);
 
+  let showResume = false;
+  
+  try {
+    const saved = localStorage.getItem("quiz_state");
+    if (saved) {
+      const state = JSON.parse(saved);
+      showResume = Object.keys(state.answers || {}).length > 0 && !state.completed;
+    }
+  } catch (e) {}
+
   return (
     <>
       <HeaderNoTitle />
@@ -29,7 +39,7 @@ function Home() {
               </p>
               <Button asChild size="lg" variant="start" className="mt-8">
                 <Link to="/questions">
-                  INICIAR <ArrowRight className="ml-2 h-4 w-4" />
+                  {showResume ? "RESUMIR" : "INICIAR"} <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>

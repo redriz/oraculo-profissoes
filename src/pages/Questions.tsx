@@ -89,19 +89,22 @@ function Questions() {
       return;
     }
 
-    // Procura próxima pergunta não respondida e salta para ela
-    for (let i = currentQuestion + 1; i < questions.length; i++) {
-      if (!hasAnsweredQuestion(questions[i].id)) {
-        setCurrentQuestion(i);
-        return;
+    // Delay de 1.5s APENAS para avanço AUTOMÁTICO depois da resposta
+    setTimeout(() => {
+      // Procura próxima pergunta não respondida e salta para ela
+      for (let i = currentQuestion + 1; i < questions.length; i++) {
+        if (!hasAnsweredQuestion(questions[i].id)) {
+          setCurrentQuestion(i);
+          return;
+        }
       }
-    }
 
-    // Todas as perguntas restantes respondidas, mas ainda não a 12
-    // Permanecer na atual ou avançar normalmente
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    }
+      // Todas as perguntas restantes respondidas, mas ainda não a 12
+      // Permanecer na atual ou avançar normalmente
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+      }
+    }, 500);
   };
 
   const handleFinalize = () => {
