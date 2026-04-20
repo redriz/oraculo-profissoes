@@ -37,21 +37,21 @@ export function LastResult() {
     }
   };
 
-  // Load on mount and when route changes
+  // Carregar ao montar componente e quando rota mudar
   useEffect(() => {
     loadLastResult();
   }, [location.pathname]);
 
-  // Listen for updates from same-tab and multi-tab
+  // Ouvir atualizações tanto na mesma aba como em outras abas
   useEffect(() => {
-    // Listen for storage changes (for multi-tab sync)
+    // Ouvir alterações no localStorage (para sincronizar múltiplas abas)
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === LAST_RESULT_KEY) {
         loadLastResult();
       }
     };
 
-    // Listen for custom event from same-tab updates
+    // Ouvir evento personalizado para atualizações na mesma aba
     const handleLastResultUpdated = (event: Event) => {
       if (event instanceof CustomEvent) {
         setLastResult(event.detail);
@@ -142,8 +142,9 @@ export function LastResult() {
             onClick={() => navigate("/results")}
             className="w-full"
             size="sm"
+            variant="outline"
           >
-            Ver Resultados Completos
+            Ver detalhes
           </Button>
         </CardContent>
       </Card>

@@ -35,12 +35,12 @@ function Questions() {
     document.title = "Perguntas - Oráculo das Profissões";
   }, []);
 
-  // Initialize to first unanswered question (0-indexed)
+  // Inicializa na primeira pergunta não respondida (índice 0)
   useEffect(() => {
     if (!loading) {
       const firstUnanswered = getFirstUnansweredQuestionId();
       setCurrentQuestion(firstUnanswered - 1);
-      // Check if last question (12) was already answered before
+      // Verifica se a última pergunta (12) já foi respondida anteriormente
       setLastQuestionAnswered(hasAnsweredQuestion(12));
     }
   }, [loading]);
@@ -49,15 +49,15 @@ function Questions() {
     return <div>Carregando...</div>;
   }
 
-  // Check if all 12 questions have been answered
+  // Verifica se todas as 12 perguntas foram respondidas
   const allQuestionsAnswered = questions.every((q) =>
     hasAnsweredQuestion(q.id),
   );
 
-  // Check if current question is the last one (question 12)
+  // Verifica se a pergunta atual é a última (pergunta 12)
   const isLastQuestion = currentQuestion === questions.length - 1;
 
-  // Auto-advance is disabled if user already answered question 12
+  // Avanço automático é desativado se o usuário já respondeu a pergunta 12
   const autoAdvance = !lastQuestionAnswered;
 
   const handleConfirmReset = () => {
@@ -75,21 +75,21 @@ function Questions() {
       questions.length,
     );
 
-    // Save answer
+    // Guardar resposta
     saveAnswer(questions[currentQuestion].id, answer);
 
-    // Check if this was question 12 (last question)
+    // Verifica se esta foi a pergunta 12 (última pergunta)
     if (isLastQuestion) {
       setLastQuestionAnswered(true);
-      return; // Don't advance
+      return; // Não avançar
     }
 
-    // If auto-advance disabled, stay on current question
+    // Se avanço automático estiver desativado, permanece na pergunta atual
     if (!autoAdvance) {
       return;
     }
 
-    // Find next unanswered question and jump to it
+    // Procura próxima pergunta não respondida e salta para ela
     for (let i = currentQuestion + 1; i < questions.length; i++) {
       if (!hasAnsweredQuestion(questions[i].id)) {
         setCurrentQuestion(i);
@@ -97,8 +97,8 @@ function Questions() {
       }
     }
 
-    // All remaining questions answered, but not question 12 yet
-    // Stay on current or advance normally
+    // Todas as perguntas restantes respondidas, mas ainda não a 12
+    // Permanecer na atual ou avançar normalmente
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
@@ -107,11 +107,11 @@ function Questions() {
   const handleFinalize = () => {
     console.log("handleFinalize called");
 
-    // Use setTimeout to ensure localStorage is updated
+    // Usar setTimeout para garantir que o localStorage seja atualizado
     setTimeout(() => {
       console.log("Calling completeQuiz()");
       completeQuiz();
-      // Navigate after a longer delay to ensure state is updated
+      // Navegar após um pequeno atraso para garantir que o estado seja atualizado
       setTimeout(() => {
         console.log("Navigating to /results");
         navigate("/results");
@@ -119,14 +119,16 @@ function Questions() {
     }, 100);
   };
 
-  const progress = ((currentQuestion + 1) / questions.length) * 100;
+  // Barra de progresso real baseada em quantidade de perguntas RESPONDIDAS, não navegação atual
+  const answeredCount = questions.filter(q => hasAnsweredQuestion(q.id)).length;
+  const progress = (answeredCount / questions.length) * 100;
 
   const question = questions[currentQuestion];
 
   const currentAnswer = getAnswerForQuestion(question.id);
 
   const handleRestart = () => {
-    // Longer delay to ensure finishQuizAndSaveResult has persisted to localStorage
+    // Pequeno atraso para garantir que os dados foram gravados no localStorage
     setTimeout(() => {
       navigate("/");
     }, 200);
@@ -166,7 +168,7 @@ function Questions() {
                   Perguntas
                 </h1>
                 <span className="text-sm text-muted-foreground">
-                  {currentQuestion + 1}/{questions.length}
+                  {answeredCount}/{questions.length} respondidas
                 </span>
               </div>
               <div className="w-full bg-muted rounded-full h-2">
@@ -182,7 +184,7 @@ function Questions() {
             </p>
           </div>
 
-          <section className="rounded-[16px] border border-border bg-card/70 p-6 shadow-sm shadow-muted/10 backdrop-blur-xl">
+          <section className={"rounded-[16px] border border-border bg-card/70 p-6 shadow-sm shadow-muted/10 backdrop-blur-xl " + (currentAnswer === false ? "border-destructive/80" : currentAnswer === true ? "border-primary/80" : "")}>
             <div className="space-y-8">
               <div className="flex items-center justify-between pb-4 border-b border-border">
                 <span className="text-2xl text-muted-foreground font-medium mr-2">

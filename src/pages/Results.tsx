@@ -24,7 +24,7 @@ function Results() {
     document.title = "Resultados - Oráculo das Profissões";
   }, []);
 
-  // Save results when quiz is completed or restore last result
+  // Guardar resultados quando questionário é concluído ou restaurar último resultado
   useEffect(() => {
     console.log("Results.tsx useEffect triggered - loading:", loading);
     if (loading || hasFinishedRef.current) return;
@@ -70,7 +70,7 @@ function Results() {
   console.log("Results.tsx rendering - activeResult:", activeResult);
   console.log("Results.tsx rendering - activeResult.answers:", activeResult.answers);
 
-  // Normalize answers: JSON converts numeric keys to strings, so convert back
+  // Normalizar respostas: JSON converte chaves numéricas para texto, converter de volta
   const normalizedAnswers = Object.keys(activeResult.answers || {}).reduce(
     (acc, key) => {
       acc[parseInt(key)] = (activeResult.answers as Record<string, boolean>)[key];
@@ -81,7 +81,7 @@ function Results() {
   console.log("Results.tsx rendering - normalizedAnswers:", normalizedAnswers);
 
   const handleRestart = () => {
-    // Longer delay to ensure finishQuizAndSaveResult has persisted to localStorage
+    // Pequeno atraso para garantir que os dados foram gravados no localStorage
     setTimeout(() => {
       navigate("/");
     }, 200);
@@ -139,11 +139,11 @@ function Results() {
                           ? "constructive"
                           : "destructive"
                       }
-                    //   className={`px-3 py-1 text-sm font-semibold ${
-                    //     answer === true
-                    //       ? "bg-green-600 hover:bg-green-700"
-                    //       : "bg-red-600 hover:bg-red-700"
-                    //   }`}
+                     //   className={`px-3 py-1 text-sm font-semibold ${
+                     //     answer === true
+                     //       ? "bg-green-600 hover:bg-green-700"
+                     //       : "bg-red-600 hover:bg-red-700"
+                     //   }`}
                     >
                       {answer === true ? "Sim" : "Não"}
                     </Badge>
