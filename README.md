@@ -12,8 +12,8 @@ Um webApp interativo que ajuda você a descobrir qual curso profissional do IEFP
 - 🧠 **Recomendações Inteligentes**: Análise das respostas para sugerir cursos adequados
 - 💾 **Persistência Local**: Todos os dados são salvos no LocalStorage do navegador
 - 🎨 **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
-- 🌓 **Tema Claro/Escuro**: Alterne entre temas para sua comodidade
-- 🔓 **Código Aberto**: Totalmente open-source, sinta-se à vontade para contribuir
+- 🌓 **Tema Claro/Escuro ou Automático**: Alterne entre temas para sua comodidade
+- 🔓 **Código Aberto**: Totalmente open-source
 
 ---
 
@@ -156,18 +156,7 @@ Este projeto é fornecido sob licença aberta. Consulte o arquivo [LICENSE](./LI
 
 O **Instituto de Emprego e Formação Profissional** oferece programas de formação profissional de qualidade para desenvolver competências e facilitar a empregabilidade dos portugueses.
 
-Este projeto foi desenvolvido como parte do evento de encerramento de um curso profissional do IEFP.
-
----
-
-## 📞 Suporte
-
-Se encontrar problemas:
-
-1. Verifique se tem Node.js e npm instalados corretamente
-2. Delete a pasta `node_modules` e execute `npm install` novamente
-3. Limpe o cache do seu navegador
-4. Verifique o console do navegador (F12) para mensagens de erro
+Este projeto foi desenvolvido como parte do evento do IEFP.
 
 ---
 
