@@ -274,7 +274,7 @@ function Results() {
                       )}
                       {course.habilitation === 1 && (
                         <Badge
-                          variant="secondary"
+                          variant="outline"
                           className="w-fit text-foreground/80"
                         >
                           Habilitação 9º Ano
@@ -282,10 +282,10 @@ function Results() {
                       )}
                       {course.habilitation === 0 && (
                         <Badge
-                          variant="default"
-                          className="w-fit"
+                          variant="outline"
+                          className="w-fit text-foreground/80"
                         >
-                          Ler/Escrer
+                          Ler/Escrever
                         </Badge>
                       )}
                     </CardContent>
@@ -315,21 +315,21 @@ function Results() {
                                     variant="outline"
                                     className="mb-4 text-foreground/80"
                                   >
-                                    Habilitação (12º Ano)
+                                    Habilitação 12º Ano
                                   </Badge>
                                 )}
                                 {course.habilitation === 1 && (
                                   <Badge
-                                    variant="secondary"
+                                    variant="outline"
                                     className="mb-4 text-foreground/80"
                                   >
-                                    Habilitação (9º Ano)
+                                    Habilitação 9º Ano
                                   </Badge>
                                 )}
                                 {course.habilitation === 0 && (
                                   <Badge
-                                    variant="default"
-                                    className="mb-4"
+                                    variant="outline"
+                                    className="mb-4 text-foreground/80"
                                   >
                                     Ler/Escrever
                                   </Badge>
