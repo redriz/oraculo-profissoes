@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import {
   AlertDialog,
-  AlertDialogAction,
+  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -235,7 +235,7 @@ function Results() {
               Resultados
             </h2>
 
-            <div className="mt-6 p-6 bg-linear-to-r from-primary/10 to-secondary/10 rounded-xl border border-border">
+            <div className="mt-6 p-6 bg-linear-to-r from-primary/20 to-secondary/10 rounded-xl border border-border">
               <p className="text-lg text-foreground font-medium">
                 {getMatchingProfile().name}
               </p>
@@ -341,9 +341,9 @@ function Results() {
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter className="flex flex-col sm:flex-row gap-2">
-                            <AlertDialogAction asChild>
+                            <AlertDialogCancel asChild>
                               <Button variant="outline">Fechar</Button>
-                            </AlertDialogAction>
+                            </AlertDialogCancel>
                             <Button
                               onClick={() => window.open(course.url, "_blank")}
                               className="w-full sm:w-auto"
