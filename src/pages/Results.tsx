@@ -40,7 +40,6 @@ function Results() {
     null,
   );
   const [resultCached, setResultCached] = useState(lastResult);
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const hasFinishedRef = useRef(false);
 
   useEffect(() => {
@@ -245,13 +244,13 @@ function Results() {
 
             <div className="mt-8">
               <h3 className="text-xl font-semibold mb-4">
-                Cursos Recomendados para o seu Perfil
+                Cursos recomendados para o seu perfil
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                 {getCoursesForProfile(getMatchingProfile().id).map((course) => (
                   <Card
                     key={course.id}
-                    className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow"
+                    className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow animate-in fade-in slide-in-from-bottom-2 duration-200"
                   >
                     <div className="aspect-video relative overflow-hidden bg-muted -mt-6 -mx-6 mb-4 rounded-t-lg">
                       <img
@@ -260,19 +259,21 @@ function Results() {
                         className="object-cover w-full h-full rounded-t-lg"
                       />
                     </div>
-                    <CardHeader className="pb-2 flex-grow">
-                      <CardTitle className="text-base leading-tight">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-base leading-tight min-h-12">
                         {course.name}
                       </CardTitle>
+                    </CardHeader>
+                    <CardContent className="grow pt-0">
                       {course.habilitation12 && (
                         <Badge
                           variant="outline"
-                          className="w-fit mt-1 text-foreground/80"
+                          className="w-fit text-foreground/80"
                         >
                           Habilitação 12º Ano
                         </Badge>
                       )}
-                    </CardHeader>
+                    </CardContent>
                     <CardFooter className="mt-auto pt-0">
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
