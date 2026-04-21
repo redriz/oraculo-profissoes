@@ -27,7 +27,7 @@ function Home() {
   return (
     <>
        <HeaderNoTitle />
-       <div className="flex flex-col md:flex-row min-h-[calc(100vh-180px)] items-center justify-center gap-2 max-w-6xl mx-auto px-4 md:px-6">
+       <div className="flex flex-col md:flex-row min-h-[calc(100vh-180px)] items-center justify-center gap-2 max-w-6xl mx-auto px-4 md:px-6 animate-in fade-in slide-in-from-bottom-2 duration-200">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full gap-6 md:gap-8">
           <div className="flex-1">
             <span className="text-6xl mb-2 block">🔮</span>

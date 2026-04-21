@@ -9,7 +9,7 @@ function About() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-bottom-2 duration-200">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
