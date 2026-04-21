@@ -298,10 +298,10 @@ function Results() {
                         </AlertDialogTrigger>
                         <AlertDialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                           <AlertDialogHeader>
-                            <AlertDialogTitle className="text-xl">
+                            <AlertDialogTitle className="text-xl text-balance">
                               {course.name}
                             </AlertDialogTitle>
-                            <AlertDialogDescription asChild>
+                            <AlertDialogDescription asChild className="text-left">
                               <div className="space-y-4 mt-4">
                                 <div className="aspect-video rounded-lg overflow-hidden bg-muted">
                                    <img 

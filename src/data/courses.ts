@@ -3,7 +3,7 @@ import type { Course } from "@/types";
 export const courses: Course[] = [
   {
     id: 400,
-    name: "TÉCNICO ESPECIALISTA EM E-COMMERCE",
+    name: "Técnico Especialista em e-Commerce",
     description: "Este curso capacita os alunos para a gestão e operação de lojas online, abordando marketing digital, plataformas de e-commerce, análise de dados, logística e atendimento ao cliente. É a escolha ideal para quem pretende construir uma carreira no dinâmico setor do comércio eletrónico.",
     habilitation: 2,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+ESPECIALISTA+EM+E-COMMERCE",
@@ -12,7 +12,7 @@ export const courses: Course[] = [
   },
   {
     id: 265,
-    name: "TÉCNICO ESPECIALISTA EM TECNOLOGIAS E PROGRAMAÇÃO DE SISTEMAS DE INFORMAÇÃO",
+    name: "Técnico Especialista em Tecnologias e Programação de Sistemas de Informação",
     description: "Este curso forma especialistas em desenvolvimento de software e gestão de sistemas de informação, abordando programação, aplicações web e móveis, bases de dados e soluções tecnológicas. É ideal para quem procura uma carreira em TI e pretende impulsionar a inovação digital.",
     habilitation: 2,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNOLOGIAS+E+PROGRAMACAO+DE+SISTEMAS+DE+INFORMACAO",
@@ -21,7 +21,7 @@ export const courses: Course[] = [
   },
   {
     id: 438,
-    name: "TÉCNICO ESPECIALISTA EM TRATAMENTOS DE ESTÉTICA E BEM ESTAR",
+    name: "Técnico Especialista em Tratamentos de Estética e Bem Estar",
     description: "Este curso forma profissionais em estética e bem-estar, abordando técnicas de beleza, massagens, tratamentos e cuidados da pele. É ideal para quem procura uma carreira neste setor.",
     habilitation: 2,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+ESPECIALISTA+EM+TRATAMENTOS+DE+ESTETICA+E+BEM+ESTAR",
@@ -30,7 +30,7 @@ export const courses: Course[] = [
   },
   {
     id: 268,
-    name: "TÉCNICO ESPECIALISTA EM CIBERSEGURANÇA",
+    name: "Técnico Especialista em Cibersegurança",
     description: "Este curso forma especialistas em segurança da informação, abordando ciberameaças, técnicas de proteção, análise de vulnerabilidades e estratégias de defesa. É ideal para quem procura uma carreira em cibersegurança e na proteção de dados e sistemas.",
     habilitation: 2,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+ESPECIALISTA+EM+CIBERSEGURANCA",
@@ -39,7 +39,7 @@ export const courses: Course[] = [
   },
   {
     id: 293,
-    name: "TÉCNICO ESPECIALISTA EM COMÉRCIO INTERNACIONAL",
+    name: "Técnico Especialista em Comércio Internacional",
     description: "Este curso forma profissionais em comércio externo, abordando normas internacionais, práticas de exportação e importação, logística e cadeia de abastecimento. É ideal para quem pretende seguir carreira no comércio internacional e contribuir para o desenvolvimento económico.",
     habilitation: 2,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+ESPECIALISTA+EM+COMERCIO+INTERNACIONAL",
@@ -48,7 +48,7 @@ export const courses: Course[] = [
   },
   {
     id: 281,
-    name: "TÉCNICO ESPECIALISTA EM CONTABILIDADE E GESTÃO",
+    name: "Técnico Especialista em Contabilidade e Gestão",
     description: "Este curso forma profissionais em contabilidade e gestão empresarial, abordando princípios contabilísticos, demonstrações financeiras, recursos humanos e estratégias de gestão. É ideal para quem pretende seguir carreira no setor da contabilidade e gestão.",
     habilitation: 2,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+ESPECIALISTA+EM+CONTABILIDADE+E+GESTAO",
@@ -57,7 +57,7 @@ export const courses: Course[] = [
   },
   {
     id: 466,
-    name: "TÉCNICO DE DESENVOLVIMENTO DE SOFTWARE",
+    name: "Técnico de Desenvolvimento de Software",
     description: "Este curso forma profissionais em desenvolvimento de software, abordando linguagens de programação, estruturas de dados, algoritmos e boas práticas de desenvolvimento. É ideal para quem procura uma carreira em TI e pretende criar soluções tecnológicas inovadoras.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+DESENVOLVIMENTO+DE+SOFTWARE",
@@ -66,7 +66,7 @@ export const courses: Course[] = [
   },
   {
     id: 118,
-    name: "TÉCNICO AUXILIAR DE FARMÁCIA",
+    name: "Técnico Auxiliar de Farmácia",
     description: "Este curso forma profissionais de farmácia, abordando a manipulação de medicamentos, gestão de stocks, atendimento ao público e práticas de segurança. É ideal para quem pretende seguir carreira no setor farmacêutico e promover o bem-estar dos doentes.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+AUXILIAR+DE+FARMACIA",
@@ -75,7 +75,7 @@ export const courses: Course[] = [
   },
   {
     id: 115,
-    name: "TÉCNICO AUXILIAR DE SAÚDE",
+    name: "Técnico Auxiliar de Saúde",
     description: "Este curso forma profissionais de saúde, abordando cuidados básicos, assistência a doentes, administração de fármacos e práticas de higiene. É ideal para quem pretende seguir carreira no setor da saúde e promover o bem-estar dos pacientes.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+AUXILIAR+DE+SAUDE",
@@ -84,7 +84,7 @@ export const courses: Course[] = [
   },
   {
     id: 276,
-    name: "TÉCNICO DE SECRETARIADO EXECUTIVO",
+    name: "Técnico de Secretariado Executivo",
     description: "Este curso forma profissionais de secretariado e administração, abordando técnicas de organização, comunicação empresarial, gestão de agendas e práticas de escritório. É ideal para quem pretende seguir carreira no setor administrativo e otimizar a eficiência organizacional.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+SECRETARIADO+EXECUTIVO",
@@ -93,7 +93,7 @@ export const courses: Course[] = [
   },
   {
     id: 437,
-    name: "CABELEIREIRO ESPECIALISTA",
+    name: "Cabeleireiro Especialista",
     description: "Este curso forma profissionais de cabeleireiro, abordando técnicas de corte, coloração, finalização e atendimento ao cliente. É ideal para quem pretende seguir carreira no setor da beleza e promover o bem-estar dos clientes.",
     habilitation: 2,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=CABELEIREIRO+ESPECIALISTA",
@@ -102,7 +102,7 @@ export const courses: Course[] = [
   },
   {
     id: 473,
-    name: "TÉCNICO DE INFORMÁTICA DE GESTÃO",
+    name: "Técnico de Informática de Gestão",
     description: "Este curso forma profissionais em informática e gestão, abordando sistemas de informação, gestão de projetos e desenvolvimento de software. É ideal para quem procura uma carreira em TI e pretende criar soluções tecnológicas inovadoras.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+INFORMATICA+DE+GESTAO",
@@ -111,7 +111,7 @@ export const courses: Course[] = [
   },
   {
     id: 280,
-    name: "TÉCNICO DE CONTABILIDADE",
+    name: "Técnico de Contabilidade",
     description: "Este curso forma profissionais em contabilidade, abordando princípios contabilísticos, demonstrações financeiras, fiscalidade e auditoria. É ideal para quem pretende seguir carreira no setor financeiro e promover a gestão eficiente de recursos económicos.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+CONTABILIDADE",
@@ -120,7 +120,7 @@ export const courses: Course[] = [
   },
   {
     id: 113,
-    name: "TÉCNICO DE AÇÃO EDUCATIVA",
+    name: "Técnico de Ação Educativa",
     description: "Este curso forma profissionais de educação, abordando o desenvolvimento infantil, técnicas de ensino, gestão de atividades e práticas de inclusão. É ideal para quem pretende seguir carreira no setor educativo e promover o desenvolvimento e bem-estar das crianças.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+ACAO+EDUCATIVA",
@@ -129,7 +129,7 @@ export const courses: Course[] = [
   },
   {
     id: 129,
-    name: "TÉCNICO DE JARDINAGEM E ESPAÇOS VERDES",
+    name: "Técnico de Jardinagem e Espaços Verdes",
     description: "Este curso forma profissionais em jardinagem e manutenção de espaços verdes, abordando técnicas de plantio, paisagismo, gestão de áreas verdes e conservação ambiental. É ideal para quem pretende seguir carreira no setor e contribuir para a preservação do meio ambiente.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+JARDINAGEM+E+ESPAÇOS+VERDES",
@@ -138,7 +138,7 @@ export const courses: Course[] = [
   },
   {
     id: 267,
-    name: "OPERADOR DE INFORMÁTICA",
+    name: "Operador de Informática",
     description: "Este curso forma profissionais em TI, abordando a operação de sistemas, manutenção de equipamentos, segurança da informação e suporte técnico. É ideal para quem pretende seguir carreira no setor tecnológico e desenvolver soluções inovadoras.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=OPERADOR+DE+INFORMATICA",
@@ -147,7 +147,7 @@ export const courses: Course[] = [
   },
   {
     id: 288,
-    name: "TÉCNICO DE LOGÍSTICA",
+    name: "Técnico de Logística",
     description: "Este curso forma profissionais em logística, abordando a gestão de stocks, distribuição, transporte e planeamento de cadeias de abastecimento. É ideal para quem pretende seguir carreira no setor e otimizar processos de distribuição.",
     habilitation: 1,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+LOGISTICA",
@@ -156,7 +156,7 @@ export const courses: Course[] = [
   },
   {
     id: 126,
-    name: "SAPADOR FLORESTAL",
+    name: "Sapador Florestal",
     description: "Este curso forma profissionais em prevenção e combate a incêndios florestais, abordando a proteção de florestas, operação de equipamentos, coordenação de equipas e segurança em ambientes naturais. É ideal para quem pretende seguir carreira na proteção florestal e na preservação ambiental.",
     habilitation: 0,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=SAPADOR+FLORESTAL",
