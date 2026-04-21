@@ -9,12 +9,13 @@ export const profileTypes: ProfileType[] = [
   {
     id: 2,
     name: "Perfil Organizacional e de Negócios",
-    relatedAnswersYes: [2, 4, 9, 11]
+    relatedAnswersYes: [2, 4, 6, 9, 11]
   },
   {
     id: 3,
     name: "Perfil Cuidado e Bem-Estar",
-    relatedAnswersYes: [3, 5, 8, 12]
+    relatedAnswersYes: [3, 5, 9, 12],
+    relatedAnswersNo: [1, 4, 11]
   },
   {
     id: 4,
