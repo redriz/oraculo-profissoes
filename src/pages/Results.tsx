@@ -252,11 +252,11 @@ function Results() {
                     className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow animate-in fade-in slide-in-from-bottom-2 duration-200"
                   >
                     <div className="aspect-video relative overflow-hidden bg-muted -mt-6 -mx-6 mb-4 rounded-t-lg">
-                      <img
-                        src={course.image}
-                        alt={course.name}
-                        className="object-cover w-full h-full rounded-t-lg"
-                      />
+                       <img 
+                         src={new URL(course.image, import.meta.url).href} 
+                         alt={course.name}
+                         className="object-cover w-full h-full rounded-t-lg"
+                       />
                     </div>
                     <CardHeader className="pb-2">
                       <CardTitle className="text-base leading-tight min-h-12">
@@ -288,11 +288,11 @@ function Results() {
                             <AlertDialogDescription asChild>
                               <div className="space-y-4 mt-4">
                                 <div className="aspect-video rounded-lg overflow-hidden bg-muted">
-                                  <img
-                                    src={course.image}
-                                    alt={course.name}
-                                    className="object-cover w-full h-full"
-                                  />
+                                   <img 
+                                     src={new URL(course.image, import.meta.url).href} 
+                                     alt={course.name}
+                                     className="object-cover w-full h-full"
+                                   />
                                 </div>
                                 {course.habilitation12 && (
                                   <Badge
