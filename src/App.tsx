@@ -36,7 +36,7 @@ function Home() {
                 Oráculo das Profissões
               </h1>
               <p className="text-1xl text-muted-foreground mb-4">
-                Descubra qual curso é o ideal para você
+                Descubra qual formação profissional é a ideal para você
               </p>
               <Button asChild size="lg" variant="start" className={showResume ? "border border-green-500 bg-green-500/20 hover:bg-green-600 text-green-600" : ""}>
                 <Link to="/questions">

@@ -7,7 +7,7 @@ export interface Course {
   id: number;
   name: string;
   description: string;
-  habilitation12: boolean;
+  habilitation: number;
   url: string;
   image: string;
   profileType: number[];

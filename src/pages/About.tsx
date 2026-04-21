@@ -31,9 +31,9 @@ function About() {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 O Oráculo das Profissões é uma aplicação web interativa
                 desenvolvida como parte do curso de Técnico Especialista em
-                Aplicações Informáticas de Gestão. A plataforma auxilia usuários
+                Aplicações Informáticas de Gestão do IEFP. A plataforma auxilia usuários
                 a descobrirem carreiras alinhadas com seus interesses e
-                habilidades através de um processo intuitivo e envolvente.
+                habilidades através de um processo intuitivo.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 O objetivo principal é democratizar o acesso à informação sobre

@@ -243,7 +243,7 @@ function Results() {
 
             <div className="mt-8">
               <h3 className="text-xl font-semibold mb-4">
-                Cursos recomendados para o seu perfil
+                Ofertas de formações recomendadas para o seu perfil
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                 {getCoursesForProfile(getMatchingProfile().id).map((course) => (
@@ -264,12 +264,28 @@ function Results() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="grow pt-0">
-                      {course.habilitation12 && (
+                      {course.habilitation === 2 && (
                         <Badge
                           variant="outline"
                           className="w-fit text-foreground/80"
                         >
                           Habilitação 12º Ano
+                        </Badge>
+                      )}
+                      {course.habilitation === 1 && (
+                        <Badge
+                          variant="secondary"
+                          className="w-fit text-foreground/80"
+                        >
+                          Habilitação 9º Ano
+                        </Badge>
+                      )}
+                      {course.habilitation === 0 && (
+                        <Badge
+                          variant="default"
+                          className="w-fit"
+                        >
+                          Ler/Escrer
                         </Badge>
                       )}
                     </CardContent>
@@ -294,12 +310,28 @@ function Results() {
                                      className="object-cover w-full h-full"
                                    />
                                 </div>
-                                {course.habilitation12 && (
+                                {course.habilitation === 2 && (
                                   <Badge
                                     variant="outline"
                                     className="mb-4 text-foreground/80"
                                   >
-                                    Habilitação Nível 4 (12º Ano)
+                                    Habilitação (12º Ano)
+                                  </Badge>
+                                )}
+                                {course.habilitation === 1 && (
+                                  <Badge
+                                    variant="secondary"
+                                    className="mb-4 text-foreground/80"
+                                  >
+                                    Habilitação (9º Ano)
+                                  </Badge>
+                                )}
+                                {course.habilitation === 0 && (
+                                  <Badge
+                                    variant="default"
+                                    className="mb-4"
+                                  >
+                                    Ler/Escrever
                                   </Badge>
                                 )}
                                 <p className="text-foreground leading-relaxed">
