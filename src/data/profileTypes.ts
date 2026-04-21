@@ -29,8 +29,7 @@ export const profileTypes: ProfileType[] = [
   },
   {
     id: 6,
-    name: "Não foi possível indetificar o seu perfil, talvez uma oferta de formação abaixo possa te interessar.",
-    relatedAnswersYes: [],
+    name: "Não foi possível identificar o seu perfil, talvez uma oferta de formação abaixo possa te interessar.",
     relatedAnswersNo: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   }
 ];

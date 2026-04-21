@@ -106,7 +106,7 @@ export const courses: Course[] = [
     description: "O curso de Técnico de Informática de Gestão é projetado para formar profissionais qualificados na área de informática e gestão. Os alunos aprenderão sobre sistemas de informação, gestão de projetos, análise e desenvolvimento de software. Este curso é ideal para aqueles que desejam seguir uma carreira no setor de tecnologia da informação e contribuir para o desenvolvimento de soluções tecnológicas inovadoras.",
     habilitation12: false,
     url: "https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&text=TECNICO+DE+INFORMÁTICA+DE+GESTÃO",
-    image: "./src/assets/courses-images/img-categoria-oferta-formacao-473.jpg",
+    image: "./src/assets/courses-images/img-categoria-oferta-formacao-475.jpg",
     profileType: [1, 5, 6]
   },
   {

@@ -4,9 +4,31 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { useQuizState } from "@/hooks/useQuizState";
 import { questions } from "@/data/questions";
+import { profileTypes } from "@/data/profileTypes";
+import { courses } from "@/data/courses";
 import { Footer } from "@/components/Footer";
+import type { ProfileType, Course } from "@/types";
+import { ExternalLink } from "lucide-react";
 
 const STORAGE_KEY = "quiz_state";
 
@@ -18,6 +40,7 @@ function Results() {
     null,
   );
   const [resultCached, setResultCached] = useState(lastResult);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const hasFinishedRef = useRef(false);
 
   useEffect(() => {
@@ -116,17 +139,195 @@ function Results() {
     ).length;
   };
 
+  const getMatchingProfile = (): ProfileType => {
+    const yesAnswers = Object.entries(normalizedAnswers || {})
+      .filter(([_, value]) => value === true)
+      .map(([key]) => parseInt(key));
+
+    const noAnswers = Object.entries(normalizedAnswers || {})
+      .filter(([_, value]) => value === false)
+      .map(([key]) => parseInt(key));
+
+    // Caso especial: todas as respostas SIM = perfil 5
+    if (yesAnswers.length === 12) {
+      return profileTypes[4];
+    }
+
+    // Caso especial: todas as respostas NÃO = perfil 6
+    if (noAnswers.length === 12) {
+      return profileTypes[5];
+    }
+
+    // Primeiro procurar correspondência EXATA
+    for (const profile of profileTypes) {
+      let allYesMatch = true;
+      let allNoMatch = true;
+
+      // Verificar todas as respostas SIM obrigatórias estão presentes
+      if (profile.relatedAnswersYes && profile.relatedAnswersYes.length > 0) {
+        allYesMatch = profile.relatedAnswersYes.every((id) =>
+          yesAnswers.includes(id),
+        );
+      }
+
+      // Verificar todas as respostas NÃO obrigatórias estão presentes
+      if (profile.relatedAnswersNo && profile.relatedAnswersNo.length > 0) {
+        allNoMatch = profile.relatedAnswersNo.every((id) =>
+          noAnswers.includes(id),
+        );
+      }
+
+      if (allYesMatch && allNoMatch) {
+        return profile;
+      }
+    }
+
+    // Se nenhuma correspondência exata, usar melhor taxa de correspondência
+    let bestMatch = profileTypes[5];
+    let bestMatchRate = -1;
+
+    for (const profile of profileTypes) {
+      const totalRequired =
+        (profile.relatedAnswersYes?.length || 0) +
+        (profile.relatedAnswersNo?.length || 0);
+
+      if (totalRequired === 0) continue;
+
+      let matchCount = 0;
+
+      if (profile.relatedAnswersYes) {
+        for (const answerId of profile.relatedAnswersYes) {
+          if (yesAnswers.includes(answerId)) {
+            matchCount++;
+          }
+        }
+      }
+
+      if (profile.relatedAnswersNo) {
+        for (const answerId of profile.relatedAnswersNo) {
+          if (noAnswers.includes(answerId)) {
+            matchCount++;
+          }
+        }
+      }
+
+      const matchRate = matchCount / totalRequired;
+
+      if (matchRate > bestMatchRate) {
+        bestMatchRate = matchRate;
+        bestMatch = profile;
+      }
+    }
+
+    return bestMatch;
+  };
+
+  const getCoursesForProfile = (profileId: number): Course[] => {
+    return courses.filter((course) => course.profileType.includes(profileId));
+  };
+
   return (
     <>
       <Header />
 
       <main className="relative min-h-screen bg-background text-foreground">
         <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-8 sm:py-10">
-          <div className="mb-8 max-w-3xl">
+          <div className="mb-8 w-full">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Resultados
             </h2>
-            <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+
+            <div className="mt-6 p-6 bg-linear-to-r from-primary/10 to-secondary/10 rounded-xl border border-border">
+              <p className="text-lg text-foreground font-medium">
+                {getMatchingProfile().name}
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold mb-4">
+                Cursos Recomendados para o seu Perfil
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+                {getCoursesForProfile(getMatchingProfile().id).map((course) => (
+                  <Card
+                    key={course.id}
+                    className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow"
+                  >
+                    <div className="aspect-video relative overflow-hidden bg-muted -mt-6 -mx-6 mb-4 rounded-t-lg">
+                      <img
+                        src={course.image}
+                        alt={course.name}
+                        className="object-cover w-full h-full rounded-t-lg"
+                      />
+                    </div>
+                    <CardHeader className="pb-2 flex-grow">
+                      <CardTitle className="text-base leading-tight">
+                        {course.name}
+                      </CardTitle>
+                      {course.habilitation12 && (
+                        <Badge
+                          variant="outline"
+                          className="w-fit mt-1 text-foreground/80"
+                        >
+                          Habilitação 12º Ano
+                        </Badge>
+                      )}
+                    </CardHeader>
+                    <CardFooter className="mt-auto pt-0">
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button className="w-full" variant="outline">
+                            Ver detalhes
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                          <AlertDialogHeader>
+                            <AlertDialogTitle className="text-xl">
+                              {course.name}
+                            </AlertDialogTitle>
+                            <AlertDialogDescription asChild>
+                              <div className="space-y-4 mt-4">
+                                <div className="aspect-video rounded-lg overflow-hidden bg-muted">
+                                  <img
+                                    src={course.image}
+                                    alt={course.name}
+                                    className="object-cover w-full h-full"
+                                  />
+                                </div>
+                                {course.habilitation12 && (
+                                  <Badge
+                                    variant="outline"
+                                    className="mb-4 text-foreground/80"
+                                  >
+                                    Habilitação Nível 4 (12º Ano)
+                                  </Badge>
+                                )}
+                                <p className="text-foreground leading-relaxed">
+                                  {course.description}
+                                </p>
+                              </div>
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter className="flex flex-col sm:flex-row gap-2">
+                            <AlertDialogAction asChild>
+                              <Button variant="outline">Fechar</Button>
+                            </AlertDialogAction>
+                            <Button
+                              onClick={() => window.open(course.url, "_blank")}
+                              className="w-full sm:w-auto"
+                            >
+                              Ver site do IEFP <ExternalLink />
+                            </Button>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <p className="mt-8 text-base leading-7 text-muted-foreground sm:text-lg">
               Aqui estão todas as suas respostas. Você respondeu{" "}
               <strong>SIM</strong> a {getYesCount()} perguntas e{" "}
               <strong>NÃO</strong> a {getNoCount()} perguntas.
