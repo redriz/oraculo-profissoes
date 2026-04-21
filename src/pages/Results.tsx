@@ -253,7 +253,7 @@ function Results() {
                   >
                     <div className="aspect-video relative overflow-hidden bg-muted -mt-6 -mx-6 mb-4 rounded-t-lg">
                        <img 
-                         src={course.image.startsWith('/') ? course.image : `/${course.image}`} 
+                         src={course.image} 
                          alt={course.name}
                          className="object-cover w-full h-full rounded-t-lg"
                        />
@@ -289,7 +289,7 @@ function Results() {
                               <div className="space-y-4 mt-4">
                                 <div className="aspect-video rounded-lg overflow-hidden bg-muted">
                                    <img 
-                                     src={course.image.startsWith('/') ? course.image : `/${course.image}`} 
+                                     src={course.image} 
                                      alt={course.name}
                                      className="object-cover w-full h-full"
                                    />
