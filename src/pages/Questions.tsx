@@ -182,7 +182,7 @@ function Questions() {
               </div>
             </div>
             <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-lg">
-              Responda às perguntas abaixo para descobrir qual curso do IEFP é o
+              Responda às perguntas abaixo para descobrir qual formação do IEFP é a
               mais adequada para você.
             </p>
           </div>
