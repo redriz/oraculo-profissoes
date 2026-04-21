@@ -348,7 +348,7 @@ function Results() {
                               onClick={() => window.open(course.url, "_blank")}
                               className="w-full sm:w-auto"
                             >
-                              Ver site do IEFP <ExternalLink />
+                              Ver no IEFP <ExternalLink />
                             </Button>
                           </AlertDialogFooter>
                         </AlertDialogContent>
