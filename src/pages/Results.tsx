@@ -224,6 +224,8 @@ function Results() {
     return courses.filter((course) => course.profileType.includes(profileId));
   };
 
+  const matchingProfile = getMatchingProfile();
+
   return (
     <>
       <Header />
@@ -235,9 +237,13 @@ function Results() {
               Resultados
             </h2>
 
-            <div className="mt-6 p-6 bg-linear-to-r from-primary/20 to-secondary/10 rounded-xl border border-border">
+            <div className={`mt-6 p-6 bg-linear-to-r rounded-xl border border-border ${
+              matchingProfile.id === 6 
+                ? 'from-yellow-500/10 to-secondary/10' 
+                : 'from-primary/15 to-secondary/10'
+            }`}>
               <p className="text-lg text-foreground font-medium">
-                {getMatchingProfile().name}
+                {matchingProfile.name}
               </p>
             </div>
 
