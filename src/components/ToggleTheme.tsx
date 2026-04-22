@@ -22,7 +22,7 @@ export function ToggleTheme() {
     }, []);
 
     useEffect(() => {
-        // Listener para mudanças no sistema quando theme é system
+        // Listener para mudanças no sistema quando o tema é "system"
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
         
         const handleSystemChange = () => {

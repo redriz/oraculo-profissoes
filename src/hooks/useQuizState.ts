@@ -9,7 +9,7 @@ export function useQuizState() {
   const [lastResult, setLastResult] = useState<LastResult | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Load state from localStorage on mount
+  // Carregamento inicial do estado do quiz e do último resultado
   useEffect(() => {
     const savedState = localStorage.getItem(STORAGE_KEY);
     const savedLastResult = localStorage.getItem(LAST_RESULT_KEY);
@@ -48,7 +48,7 @@ export function useQuizState() {
   };
 
   const completeQuiz = () => {
-    // Read latest state from localStorage to avoid stale state
+    // Ler o estado mais recente do localStorage para garantir que temos todas as respostas atualizadas
     const savedState = localStorage.getItem(STORAGE_KEY);
     console.log("completeQuiz called - STORAGE_KEY found:", !!savedState, "content:", savedState);
     if (!savedState) return;
@@ -81,22 +81,22 @@ export function useQuizState() {
     try {
       const latestState = JSON.parse(savedState) as QuizState;
 
-      // Create and save the last result
+      // Criar o resultado final a ser salvo, incluindo as respostas e a data de conclusão
       const result: LastResult = {
         answers: latestState.answers,
         completedAt: Date.now(),
       };
       
-      // Save to localStorage FIRST (synchronous, guaranteed to work)
+      // Salva no localStorage primeiro (sinconizado, garante sucesso antes de atualizar estado)
       localStorage.setItem(LAST_RESULT_KEY, JSON.stringify(result));
       
-      // Update local state
+      // Atualiza o estado local
       setLastResult(result);
 
-      // Dispatch custom event for same-tab components listening
+      // Dispara evento personalizado para componentes na mesma aba que estão ouvindo
       window.dispatchEvent(new CustomEvent('lastResultUpdated', { detail: result }));
 
-      // Finally, clear the active quiz state
+      // Finalmente, limpar o estado ativo do quiz
       localStorage.removeItem(STORAGE_KEY);
       setQuizState({ answers: {}, completed: false });
     } catch (error) {
@@ -126,13 +126,13 @@ export function useQuizState() {
   };
 
   const getFirstUnansweredQuestionId = (): number => {
-    // Find the first question that hasn't been answered
+    // Encontrar a primeira questão que não foi respondida
     for (let i = 1; i <= 12; i++) {
       if (!hasAnsweredQuestion(i)) {
         return i;
       }
     }
-    // All questions answered, return 1 (or last one)
+    // Se todas as questões foram respondidas, retornar 1 (ou a última)
     return 1;
   };
 

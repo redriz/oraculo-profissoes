@@ -3,29 +3,29 @@ import type { ProfileType } from "@/types";
 export const profileTypes: ProfileType[] = [
   {
     id: 1,
-    name: "Perfil Analítico e Digital",
+    name: "Perfil analítico e digital.",
     relatedAnswersYes: [1, 2, 7, 10]
   },
   {
     id: 2,
-    name: "Perfil Organizacional e de Negócios",
+    name: "Perfil organizacional e de negócios.",
     relatedAnswersYes: [2, 4, 6, 9, 11]
   },
   {
     id: 3,
-    name: "Perfil Cuidado e Bem-Estar",
+    name: "Perfil cuidado e bem-estar.",
     relatedAnswersYes: [3, 5, 9, 12],
     relatedAnswersNo: [1, 4, 11]
   },
   {
     id: 4,
-    name: "Perfil Prático e Operacional",
+    name: "Perfil prático e operacional.",
     relatedAnswersYes: [5, 8, 12],
     relatedAnswersNo: [2]
   },
   {
     id: 5,
-    name: "Tens um perfil extremamente versátil e adaptável.",
+    name: "Perfil extremamente versátil e adaptável.",
     relatedAnswersYes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   },
   {

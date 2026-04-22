@@ -234,7 +234,7 @@ function Results() {
         <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-8 sm:py-10">
           <div className="mb-8 w-full">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Resultados
+              Resultado
             </h2>
 
             <div className={`mt-6 p-6 bg-linear-to-r rounded-xl border border-border ${

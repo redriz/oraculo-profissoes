@@ -14,7 +14,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import type { LastResult as LastResultType } from "@/types";
+import type { LastResult as LastResultType, ProfileType } from "@/types";
+import { profileTypes } from "@/data/profileTypes";
 
 const LAST_RESULT_KEY = "quiz_last_result";
 
@@ -88,6 +89,98 @@ export function LastResult() {
     setShowDeleteDialog(false);
   };
 
+  const getMatchingProfile = (): ProfileType | null => {
+    if (!lastResult) return null;
+
+    // Normalizar respostas
+    const normalizedAnswers = Object.keys(lastResult.answers || {}).reduce(
+      (acc, key) => {
+        acc[parseInt(key)] = (lastResult.answers as Record<string, boolean>)[key];
+        return acc;
+      },
+      {} as Record<number, boolean>,
+    );
+
+    const yesAnswers = Object.entries(normalizedAnswers || {})
+      .filter(([_, value]) => value === true)
+      .map(([key]) => parseInt(key));
+
+    const noAnswers = Object.entries(normalizedAnswers || {})
+      .filter(([_, value]) => value === false)
+      .map(([key]) => parseInt(key));
+
+    // Caso especial: todas as respostas SIM = perfil 5
+    if (yesAnswers.length === 12) {
+      return profileTypes[4];
+    }
+
+    // Caso especial: todas as respostas NÃO = perfil 6
+    if (noAnswers.length === 12) {
+      return profileTypes[5];
+    }
+
+    // Primeiro procurar correspondência EXATA
+    for (const profile of profileTypes) {
+      let allYesMatch = true;
+      let allNoMatch = true;
+
+      if (profile.relatedAnswersYes && profile.relatedAnswersYes.length > 0) {
+        allYesMatch = profile.relatedAnswersYes.every((id) =>
+          yesAnswers.includes(id),
+        );
+      }
+
+      if (profile.relatedAnswersNo && profile.relatedAnswersNo.length > 0) {
+        allNoMatch = profile.relatedAnswersNo.every((id) =>
+          noAnswers.includes(id),
+        );
+      }
+
+      if (allYesMatch && allNoMatch) {
+        return profile;
+      }
+    }
+
+    // Se nenhuma correspondência exata, usar melhor taxa de correspondência
+    let bestMatch = profileTypes[5];
+    let bestMatchRate = -1;
+
+    for (const profile of profileTypes) {
+      const totalRequired =
+        (profile.relatedAnswersYes?.length || 0) +
+        (profile.relatedAnswersNo?.length || 0);
+
+      if (totalRequired === 0) continue;
+
+      let matchCount = 0;
+
+      if (profile.relatedAnswersYes) {
+        for (const answerId of profile.relatedAnswersYes) {
+          if (yesAnswers.includes(answerId)) {
+            matchCount++;
+          }
+        }
+      }
+
+      if (profile.relatedAnswersNo) {
+        for (const answerId of profile.relatedAnswersNo) {
+          if (noAnswers.includes(answerId)) {
+            matchCount++;
+          }
+        }
+      }
+
+      const matchRate = matchCount / totalRequired;
+
+      if (matchRate > bestMatchRate) {
+        bestMatchRate = matchRate;
+        bestMatch = profile;
+      }
+    }
+
+    return bestMatch;
+  };
+
   return (
     <>
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
@@ -113,10 +206,14 @@ export function LastResult() {
       <Card className="w-full sm:w-80">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-lg">Último Resultado</CardTitle>
-              <CardDescription>Seu questionário anterior</CardDescription>
-            </div>
+             <div>
+               <CardTitle className="text-lg">Último Resultado</CardTitle>
+               <CardDescription>
+                 {getMatchingProfile()?.id === 6 
+                   ? "Perfil não identificado" 
+                   : getMatchingProfile()?.name || "Seu questionário anterior"}
+               </CardDescription>
+             </div>
             <Button
               onClick={() => setShowDeleteDialog(true)}
               variant="ghost"
